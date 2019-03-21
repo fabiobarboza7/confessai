@@ -4,7 +4,7 @@ class ConfessesController < ApplicationController
     @confess = current_user.confesss.build(confess_params)
 
     if @confess.save!
-      ConfessMailer.creation_confirmation(@confess).deliver_now
+      ConfessMailer.user_answer(@confess).deliver_now
       if @confess.email.nil? ==  false
       	flash[:notice] = "Parabéns, você desabafou! Enviamos uma dica legal para o seu e-mail";      	
       else
