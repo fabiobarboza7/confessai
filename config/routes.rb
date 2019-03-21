@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'confesses/new'
+  resources :confesses, only: [:new, :create]
   get 'confesses/create'
   devise_for :users
   root to: 'pages#home'

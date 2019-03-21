@@ -1,10 +1,11 @@
 class ConfessesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def create
-    @confess = current_user.confesss.build(confess_params)
+    @confess = Confess.new(confess_params)
 
     if @confess.save!
-      ConfessMailer.user_answer(@confess).deliver_now
+      ConfessMailer.confess_answer(@confess).deliver_now
       if @confess.email.nil? ==  false
       	flash[:notice] = "Parabéns, você desabafou! Enviamos uma dica legal para o seu e-mail";      	
       else
@@ -14,7 +15,7 @@ class ConfessesController < ApplicationController
     else
       flash[:alert] = "Você não conseguiu enviar o seu desabafo, tente novamente";
     end
-    redirect_to root
+    redirect_to root_path
   end
 
   private
