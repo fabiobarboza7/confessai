@@ -7,3 +7,5 @@ ActionMailer::Base.smtp_settings = {
   authentication: :login,
   enable_starttls_auto: true
 }
+
+# Usar Heroku config:set GMAIL_APP_PASSWORD=****** para configurar as ENV
