@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row mt-5">
+		<div class="col-sm-8 offset-sm-2 mt-5 ">
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">
+							Confissões
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @confesses.each do |confess| %>
+						<tr>
+							<td>
+								<%= confess.text %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

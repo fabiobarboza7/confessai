@@ -1,5 +1,9 @@
 class ConfessesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:new, :create, :index]
+
+  def index
+    @confesses = Confess.all
+  end
 
   def create
     @confess = Confess.new(confess_params)
