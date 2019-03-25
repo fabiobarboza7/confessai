@@ -23,7 +23,7 @@
 								<tr>
 									<td class="d-flex justify-content-between">
 										<span><%= confess.text.html_safe %></span>
-										<%= confess.vote.user_votes if confess.vote %>
+										<%#= confess.vote.user_votes if confess.vote %>
 										<%= link_to 'deletar', confess_path(confess.id), method: :delete %>
 									</td>
 								</tr>
@@ -41,7 +41,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%= render 'form'	 %>
+					<%= render 'form' %>
 				</tbody>
 			</table>
 		</div>
