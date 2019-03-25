@@ -22,7 +22,6 @@ class ConfessesController < ApplicationController
       	flash[:notice] = "Parabéns, você desabafou! Enviamos uma dica legal para o seu e-mail";      	
       else
       	flash[:notice] = "Parabéns, você desabafou!";      	
-
       end
       redirect_to root_path
     else

@@ -23,6 +23,7 @@
 								<tr>
 									<td class="d-flex justify-content-between">
 										<span><%= confess.text.html_safe %></span>
+										<%= confess.vote.user_votes if confess.vote %>
 										<%= link_to 'deletar', confess_path(confess.id), method: :delete %>
 									</td>
 								</tr>
@@ -40,14 +41,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @all_confesses.each do |confess| %>
-						<tr>
-							<td class="d-flex justify-content-between">
-								<span><i><%= confess.text %></i></span>
-								<i class="fas fa-heart text-danger"></i>
-							</td>
-						</tr>
-					<% end %>
+					<%= render 'form'	 %>
 				</tbody>
 			</table>
 		</div>
