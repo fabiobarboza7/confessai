@@ -12,8 +12,8 @@ class ConfessMailer < ApplicationMailer
    @user = user
 
     mail(
-      to:       @user.email,
-      subject:  "Oi #{user.name}, leia este email"
+      to:       @user.user.email,
+      subject:  "Oi #{@user.user.name}, leia este email"
     )
   end
 end

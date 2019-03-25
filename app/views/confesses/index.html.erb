@@ -1,6 +1,36 @@
 <div class="container">
 	<div class="row mt-5">
 		<div class="col-sm-8 offset-sm-2 mt-5 ">
+			<% if user_signed_in? %>
+				<table class="table table-striped">
+					<thead class="bg-danger text-white">
+						<tr>
+							<th scope="col">
+								Minhas Confissões
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% if !@user_confesses %>
+							<tr>
+								<td class="d-flex justify-content-between">
+									Você ainda não desabafou, desabafe 
+									<%= link_to 'clique aqui', new_confess_path %>
+								</td>
+							</tr>
+						<% else %>							
+							<% @user_confesses.each do |confess| %>
+								<tr>
+									<td class="d-flex justify-content-between">
+										<span><%= confess.text.html_safe %></span>
+										<%= link_to 'deletar', confess_path(confess.id), method: :delete %>
+									</td>
+								</tr>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>		
 			<table class="table table-striped">
 				<thead class="thead-dark">
 					<tr>
@@ -10,10 +40,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<% @confesses.each do |confess| %>
+					<% @all_confesses.each do |confess| %>
 						<tr>
-							<td>
-								<%= confess.text %>
+							<td class="d-flex justify-content-between">
+								<span><i><%= confess.text %></i></span>
+								<i class="fas fa-heart text-danger"></i>
 							</td>
 						</tr>
 					<% end %>
